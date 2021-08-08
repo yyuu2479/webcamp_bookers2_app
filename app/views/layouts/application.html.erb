@@ -41,7 +41,7 @@
               <li>
                 <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do%>
                   <i class="fas fa-sign-out-alt"></i>
-                  logout
+                  Log out
                 <% end %>
               </li>
             <%else%>
@@ -60,13 +60,13 @@
               <li>
                 <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
                   <i class="fas fa-user-plus"></i>
-                  sign up
+                  Sign up
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_session_path, class:"nav-link text-light" do %>
                   <i class="fas fa-sign-in-alt"></i>
-                  login
+                  Log in
                 <% end%>
               </li>
             <%end%>
