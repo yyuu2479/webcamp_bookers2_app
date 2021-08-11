@@ -38,6 +38,29 @@
             <% end %>
           </tr>
         </table>
+
+        <table>
+          <% @book_comments.each do |book|%>
+            <tr>
+                <td><%= attachment_image_tag book.user, :profile_image, :fill,65,65, format: 'jpeg', fallback: 'no-image.jpeg'%></td>
+                <td><%= book.comment %></td>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to user_path(book.user) do %>
+                  <%= book.user.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
+        <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, class:"form-control"%>
+          </div>
+          <%= f.submit '送信' %>
+        <% end %>
       </div>
     </div>
   </div>
