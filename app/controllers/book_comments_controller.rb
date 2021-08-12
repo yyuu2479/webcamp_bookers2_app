@@ -1,4 +1,5 @@
 class BookCommentsController < ApplicationController
+  
   def create
     book = Book.find(params[:book_id])
     @book_comment = BookComment.new(book_comment_params)
@@ -13,6 +14,8 @@ class BookCommentsController < ApplicationController
     book_comment.destroy
     redirect_back fallback_location: root_path
   end
+  
+  
   
   private
   
