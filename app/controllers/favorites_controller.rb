@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-  
   def  create
     user = current_user
     book = Book.find(params[:book_id])
