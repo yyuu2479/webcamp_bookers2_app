@@ -8,8 +8,31 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following_user, through: 'follower', source: :followed
+  
+  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :follower_user, through: 'followed', source: :follower
+  
   attachment :profile_image
   
   validates :name, uniqueness: true, length:{in:2..20}
   validates :introduction, length:{maximum: 50}
+  
+  
+  # フォロー処理をしてくれるメゾット
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+  
+  # フォローを外してくれる処理をしてくれるメゾット
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+  
+  # フォローをしているか確認してくれるメゾット
+  def following?(user_id)
+    following_user.include?(user_id)
+  end
+  
 end
