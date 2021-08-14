@@ -24,13 +24,6 @@
                 <td><%= link_to book.title, book_path(book.id) %></td>
                 <td><%= book.body %></td>
                 <td>コメント数： <%= book.book_comments.count%></td>
-                <td>
-                  <% if current_user.following?(book.user) %>
-                    <%= link_to 'フォロー解除', user_relationships_path(book.user.id), method: :delete %>
-                  <% else %>
-                    <%= link_to 'フォローする', user_relationships_path(book.user.id), method: :post %>
-                  <% end %>
-                </td>
               </tr>
             <% end %>
           </tbody>
