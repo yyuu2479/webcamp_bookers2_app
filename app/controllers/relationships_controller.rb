@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
   end
   
   def followeds
+    @user = User.find(params[:user_id])
   end
   
   def create
