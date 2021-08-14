@@ -1,6 +1,6 @@
 <main>
   <h2>Follower Users</h2>
-  <% if @user.followed.exists? %>
+  <% if @users.exists? %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @user.follower_user.each do |user|%>
+        <% @users.each do |user|%>
           <tr>
             <td><%= attachment_image_tag user, :profile_image, :fill,40,40, format: 'jpeg', fallback: "no-image.jpeg"%></td>
             <td><%= user.name %></td>
