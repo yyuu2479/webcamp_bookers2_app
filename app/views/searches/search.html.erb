@@ -1,5 +1,5 @@
 <table class="table table-hover">
-  <% if @dates == "user"%>
+  <% if @model == "user"%>
     <h2>Users search for "<%= @value %>"</h2>
     <thead>
       <tr>
@@ -13,7 +13,7 @@
       <% @dates.each do |user|%>
         <tr>
           <td><%= attachment_image_tag user, :profile_image, :fill,40,40, format: 'jpeg', fallback: 'no-image.jpeg' %></td>
-          <td><%= user.name %></td>
+          <td><%= link_to user.name, user_path(user) %></td>
           <td><%= user.introduction %></td>
         </tr>
       <% end %>
@@ -32,7 +32,7 @@
       <% @dates.each do |book|%>
         <tr>
           <td><%= attachment_image_tag book.user, :profile_image, :fill,40,40, format: 'jpeg', fallback: 'no-image.jpeg' %></td>
-          <td><%= book.title %></td>
+          <td><%= link_to book.title, book_path(book) %></td>
           <td><%= book.body %></td>
         </tr>
       <% end %>

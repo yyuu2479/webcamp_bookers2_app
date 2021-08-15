@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
     if model == "user"
       User.where("name LIKE ?", "%#{value}%")
     else
-      Book.where("title LIKE ?", "%#{value}%")
+      Book.where("title LIKE ?", "%#{value}%"
     end
   end
   
