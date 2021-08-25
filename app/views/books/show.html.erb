@@ -38,7 +38,7 @@
     <!--コメント機能-->
       <%= form_with(model:[@book, @book_comment]) do |f| %>
         <div class="form-group">
-          <%= f.text_area :comment, class:"form-control text_comment"%>
+          <%= f.text_area :comment, class:"form-control", size:"90x5"%>
         </div>
         <%= f.submit '送信' %>
       <% end %>
