@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  
   has_many :favorites, dependent: :destroy
+  
   has_many :book_comments, dependent: :destroy
 
   has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
@@ -18,6 +20,8 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length:{in:2..20}
   validates :introduction, length:{maximum: 50}
+
+
 
   # フォローするメゾット
   def follow(user_id)
