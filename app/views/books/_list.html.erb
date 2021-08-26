@@ -12,28 +12,22 @@
     </tr>
     <tr>
       <th>follows</th>
-      <th>
-        <%= link_to user.follower.count, user_followings_path(user)%>
+      <th id="following-count_<%= user.id%>" class="counting_<%= user.id %>">
+        <%= render 'relationships/following-count', user: user %>
       </th>
     </tr>
     <tr>
       <th>followers</th>
-      <th>
-        <%= link_to user.followed.count, user_followers_path(user)%>
+      <th id="followed-count_<%= user.id%>" class="counted_<%= user.id %>">
+        <%= render 'relationships/followed-count', user: user %>
       </th>
     </tr>
   </table>
   <div class="row">
     <% if current_user.id != user.id %>
-      <% if current_user.following?(user)%>
-        <%= link_to user_relationships_path(user), method: :delete do %>
-          <button class="btn btn-info">フォロー外す</button>
-        <% end %>
-      <% else %>
-        <%= link_to user_relationships_path(user), method: :post do %>
-          <button class="btn btn-success">フォローする</button>
-        <% end %>
-      <%end%>
+      <div id="user_relationship_<%= user.id %>">
+       <%= render 'relationships/relationship', user: user %>
+      </div>
     <% else %>
       <%= link_to edit_user_path(user.id) , class:"btn btn-outline-secondary btn-block btn-sm mt-4" do %>
         <i class="fas fa-user-cog"></i>

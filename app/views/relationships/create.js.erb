@@ -1,0 +1,10 @@
+<!--詳細ページ　いいね機能まとめ-->
+$("#user_relationship_<%= @user.id %>").html("<%= j(render 'relationships/relationship', user: @user)%>");
+$("#following-count_<%= @user.id%>").html("<%= j(render 'relationships/following-count', user: @user) %>");
+$("#followed-count_<%= @user.id%>").html("<%= j(render 'relationships/followed-count', user: @user) %>");
+
+
+<!--ユーザー一覧ページ　いいね機能まとめ-->
+$("#user_index_relationship_<%= @user.id%>").html("<%= j(render 'relationships/relationship_user', user: @user)%>");
+$(".counting_<%= current_user.id %>").html("<%= j(render 'relationships/following-count', user: current_user)%>");
+$("counted_<%= current_user.id %>").html("<%= j(render 'relationships/followed-count', user: current_user)%>");
