@@ -1,15 +1,16 @@
 class BooksController < ApplicationController
     def index
         @book = Book.new
-        @books = Book.all
+        @books = Book.includes(:favorited_users).sort{|a, b| b.favorited_users.size <=> a.favorited_users.size}
     end
 
     def show
         @book_new = Book.new
-        @book_comment = BookComment.new
         @book = Book.find(params[:id])
-        @user = @book.user
+        @book_comment = BookComment.new
         @book_comments = @book.book_comments
+        @user = @book.user
+        impressionist(@book, nil, unique: [:impressionable_id, :ip_address])
     end
 
     def edit
