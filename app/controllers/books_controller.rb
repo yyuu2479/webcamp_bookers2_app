@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+    impressionist :actions => [:show]
+
     def index
         @book = Book.new
         @books = Book.includes(:favorited_users).sort{|a, b| b.favorited_users.size <=> a.favorited_users.size}
@@ -10,7 +12,7 @@ class BooksController < ApplicationController
         @book_comment = BookComment.new
         @book_comments = @book.book_comments
         @user = @book.user
-        impressionist(@book, nil, unique: [:impressionable_id, :ip_address])
+        impressionist(@book, nil, unique: [:session_hash.to_s])
     end
 
     def edit

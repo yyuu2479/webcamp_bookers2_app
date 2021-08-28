@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  is_impressionable counter_cache: true
+  
   belongs_to :user
   
   has_many :favorites, dependent: :destroy
@@ -9,7 +11,6 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length:{maximum:200}
   
-  is_impressionable counter_cache: true
   
   def favorite_by?(user)
     favorites.where(user_id: user.id).exists?
