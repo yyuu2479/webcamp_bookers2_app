@@ -8,6 +8,7 @@
     </ul>
   <% end %>
   <div class="row" id="books_show">
+    <%= render 'layouts/search', class:'mb-2'%>
     <%= render "books/index", book: @book, books: @books %>
   </div>
 </div>
