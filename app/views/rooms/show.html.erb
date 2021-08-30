@@ -1,16 +1,10 @@
 <h2><strong><%= @another_entry.user.name %>さんとのチャット</strong></h2>
-<div class="chat_messages container">
-  <% if @messages.present?%>
-    <% @messages.each do |m|%>
-      <div class="ml-5">
-        <%= m.message %>
-      </div>
-    <% end %>
-  <% end %>
+<div class="chat_messages container" id="message_<%= @room.id %>" >
+  <%= render 'messages/message', messages: @messages%>
 </div>
 <div class="chat_form">
-  <%= form_with model: @message, local: true do |f| %>
-    <%= f.text_field :message, placeholder: "メッセージを入力して下さい"%>
+  <%= form_with model: @message do |f| %>
+    <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class:'message_chat'%>
     <%= f.hidden_field :room_id, value: @room.id%>
     <% f.submit%>
   <% end%>

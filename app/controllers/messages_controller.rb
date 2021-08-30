@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   def create
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.create(message_params)
-      redirect_to room_path(@message.room_id)
+      @room = @message.room
+      @messages = @room.messages
     else
       flash[:alert] = "メッセージが送信できませんでした！"
     end

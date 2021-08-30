@@ -3,6 +3,7 @@ $("#user_relationship_<%= @user.id %>").html("<%= j(render 'relationships/relati
 $("#following-count_<%= @user.id%>").html("<%= j(render 'relationships/following-count', user: @user) %>");
 $("#followed-count_<%= @user.id%>").html("<%= j(render 'relationships/followed-count', user: @user) %>");
 
+$("#user_chat").html('<div></div>');
 
 <!--ユーザー一覧ページ　いいね機能まとめ-->
 $("#user_index_relationship_<%= @user.id%>").html("<%= j(render 'relationships/relationship_user', user: @user)%>");
