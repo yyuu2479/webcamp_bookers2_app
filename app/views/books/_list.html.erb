@@ -29,7 +29,7 @@
        <%= render 'relationships/relationship', user: user %>
       </div>
       <div class="mx-auto" id="user_chat">
-        <%= render 'books/list', book: book, user: user, is_room: is_room, room: room, room_id: room_id, entry: entry %>
+        <%= render 'users/chat', book: book, user: user, is_room: is_room, room: room, room_id: room_id, entry: entry %>
       </div>
     <% else %>
       <%= link_to edit_user_path(user.id) , class:"btn btn-outline-secondary btn-block btn-sm mt-4" do %>

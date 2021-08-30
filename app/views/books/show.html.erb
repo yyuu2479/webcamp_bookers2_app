@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'books/list', book: @book_new, user: @user%>
+    <%= render 'books/list', book: @book_new, user: @user, is_room: @is_room, room: @room, room_id: @room_id, entry: @entry %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
